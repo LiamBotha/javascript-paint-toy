@@ -1,9 +1,15 @@
+:root {
+    --color-a: #00FF15;
+    --color-b: #9937ff;
+    --color-c: #0000FF;
+}
+
 #container {
     display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
-    row-gap: 1px;
-    column-gap: 1px;
+    grid-template-columns: repeat(32, 1fr);
+    grid-template-rows: repeat(32, 1fr);
+    row-gap: 0;
+    column-gap: 0;
     padding: 1px;
 
     width: 700px;
@@ -21,23 +27,22 @@
 }
 
 .fill-1 {
-    background-color: #cccccc;
+    background-color: var(--color-a);
 }
 
 .fill-2 {
-    background-color: #999999;
+    background-color: var(--color-b);
 }
 
 .fill-3 {
-    background-color: #6d6d6d;
+    background-color: var(--color-c);
 }
 
-.fill-4 {
-    background-color: #424242;
-}
-
-.fill-5 {
-    background-color: #1d1d1d;
+.color-picker {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: 1px solid black;
 }
 
 #reset-btn {

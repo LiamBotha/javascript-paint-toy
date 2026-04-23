@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Page Title</title>
     <meta charset="UTC-8" />
     <link rel="stylesheet" href="CSS/main.css">
 </head>
-<body>
-    <button id="reset-btn">Reset Canvas</button>
-    <div id="container">
+<body draggable="false">
+    <button id="reset-btn">Reset/Resize Canvas</button>
+    <input type="color" id="fill-1" class="color-picker" value="#00FF15"/><label for="fill-1">A</label>
+    <input type="color" id="fill-2" class="color-picker" value="#9937ff"/><label for="fill-2">B</label>
+    <input type="color" id="fill-3" class="color-picker" value="#0000FF"/><label for="fill-3">C</label>
+    <div id="container" draggable="false">
     </div>
     <script src="app.js"></script>
 </body>
