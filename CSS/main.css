@@ -4,7 +4,13 @@
     --color-c: #0000FF;
 }
 
-#container {
+body {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+#painting-grid {
     display: grid;
     grid-template-columns: repeat(32, 1fr);
     grid-template-rows: repeat(32, 1fr);

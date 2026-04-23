@@ -1,8 +1,7 @@
-const container = document.querySelector("#container");
+const container = document.querySelector("#painting-grid");
 const colorA = document.querySelector("#fill-1");
 const colorB = document.querySelector("#fill-2");
 const colorC = document.querySelector("#fill-3");
-let colorList = ["white", colorA.value, colorB.value, colorC.value];
 
 let bIsMouseDown = false;
 document.body.onmousedown = function() {
@@ -17,7 +16,6 @@ colorB.onchange = () => UpdateColors();
 colorC.onchange = () => UpdateColors();
 
 const UpdateColors = () => {
-
     const root = document.querySelector(':root');
 
     root.style.setProperty('--color-a', colorA.value);
@@ -44,7 +42,7 @@ for(let i = 0; i < defaultSize; i++)
 const reset = document.querySelector("#reset-btn");
 reset.addEventListener("click", () => {
 
-    let size = parseInt(prompt("Enter Canvas Size: "));
+    let size = parseInt(prompt("Enter Canvas Size: ", defaultSize));
 
     if(size != null) {
         let clampedSize;
@@ -65,6 +63,19 @@ reset.addEventListener("click", () => {
     }
 });
 
+function PaintPixel(div, event) {
+    // cache last fill value
+    let fillVal = div.getAttribute("data-fill");
+    // remove old fill attribute
+    event.target.classList.remove("fill-" + fillVal)
+
+    const currentFill = (parseInt(fillVal) + 1) % 4;
+
+    // add new fill attribute
+    div.setAttribute("data-fill", currentFill.toString());
+    event.target.classList.add("fill-" + currentFill.toString());
+}
+
 function GeneratePixel()
 {
     // Create Pixel element in container grid
@@ -77,17 +88,12 @@ function GeneratePixel()
     div.addEventListener('dragstart', (e) => e.preventDefault());
 
     div.addEventListener("mouseenter", event => {
-        if(!bIsMouseDown) return;
-
-        // cache last fill value
-        let fillVal = div.getAttribute("data-fill");
-        // remove old fill attribute
-        event.target.classList.remove("fill-" + fillVal)
-        // add new fill attribute
-        div.setAttribute("data-fill", Math.min(parseInt(fillVal) + 1, 3).toString());
-        event.target.classList.add("fill-" + Math.min(parseInt(fillVal) + 1, 3).toString())
-
-        //event.target.style.backgroundColor = colorList[div.getAttribute("data-fill")];
+        if(!bIsMouseDown)
+            return;
+        PaintPixel(div, event);
+    });
+    div.addEventListener("mousedown", event => {
+        PaintPixel(div, event);
     });
 
     container.appendChild(div);
