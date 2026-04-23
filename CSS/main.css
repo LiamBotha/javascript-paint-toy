@@ -16,10 +16,11 @@ body {
     grid-template-rows: repeat(32, 1fr);
     row-gap: 0;
     column-gap: 0;
-    padding: 1px;
 
     width: 700px;
     height: 700px;
+    border: 2px solid black;
+    box-shadow: #aeaeae 2px 2px 2px;
 
     background-color: #1f1f1f;
 }
