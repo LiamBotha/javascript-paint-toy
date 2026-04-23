@@ -1,2 +1,1 @@
-Simple drawing application made for the odin project.
-With resizable grid.
+Simple paint application with resizable grid made for the odin project.
